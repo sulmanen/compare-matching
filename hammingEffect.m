@@ -9,12 +9,7 @@ statsDCT = [statsArray(4); statsArray(4)];
 
 for maxHam = hams
     strcat('Dct corpus for hamming ', maxHam)
-    matchesDCT(maxHam, :) = corpus('data/paintings/t00*.jpg', 'dct', maxHam, db, matchesDCT(maxHam, :));
-end
-
-for maxHam = hams
-    strcat('Dct corpus for hamming ', maxHam)
-    matchesDCTHalf(maxHam, :) = corpus('data/paintings/h00*.jpg', 'dct', maxHam, db, matchesDCT(maxHam, :));
+    matchesDCT(maxHam, :) = corpus('../practical-object-instance-recognition/data/paintings/t00*.jpg', 'dct', maxHam, db, matchesDCT(maxHam, :));
 end
 
 for i = hams
