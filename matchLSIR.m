@@ -2,26 +2,19 @@ function match = matchLSIR(file, imdb)
 match = MatchEntry;
 res = search(imdb, file, 'box', []);
 
-% get original image and compare to the one retrieved from db
-actualMatchFile = strrep(file, 's0', '0');
-actualMatchFile = strrep(actualMatchFile, 't0', '0');
-actualIm = imread(actualMatchFile);
-actualIm
 if isstruct(res)
     scores = res.geom.scores ;
 else
     scores = res ;
 end
 
+%% pick the highest score
 [scores, perm] = sort(scores, 'descend') ;
-ii = perm(1) ; %% pick the highest score
-im = getImage(imdb, ii, false) ;
-if size(im,1) > 1024
-    im = imresize(im, [1024 NaN]) ;
-elseif size(im,2) > 1024
-    im = imresize(im, [NaN 1024]) ;
-end
-match.Correct = isequal(im, actualIm);
+ii = perm(1);  
+fileIdx = strrep(strrep(strrep(file, 't0', '0'), '.jpg', ''), 'data/paintings/','')
+% if the returned db index and the file index plus 3 are equal we have a correct match 
+% it's dirty but an easy way to verify for a correct match
+match.Correct = isequal(ii + 3, str2num(fileIdx));
 match.Type = 'lsir';
 match.File = file;
 end
