@@ -1,8 +1,7 @@
-%% for all jpg calc simplehash and dct hash
+%% build simple and dct hash database
 files = dir('../practical-object-instance-recognition/data/paintings/00*.jpg');
 i = 1;
 
-%% for all t h and png find match
 for file = files'
     file.name 
     db(i) = HashEntry;
@@ -11,8 +10,3 @@ for file = files'
     db(i).Dct = dcthash(strcat('../practical-object-instance-recognition/data/paintings/',file.name));
     i = i + 1;
 end
-
-%% record stats for the match
-
-%% find matches using new algorigthm and record results
-
