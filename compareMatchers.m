@@ -14,3 +14,4 @@ plotHamming('../practical-object-instance-recognition/data/paintings/h00*.jpg','
 
 % LSIR
 corpusLSIR('../practical-object-instance-recognition/data/paintings/h00*.jpg', imdb);
+corpusLSIR('../practical-object-instance-recognition/data/paintings/t00*.jpg', imdb);
