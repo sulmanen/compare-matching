@@ -3,5 +3,6 @@ classdef MatchEntry
         Type = ''
         File = ''
         Correct = true
+        Hamming = 0
     end
 end
